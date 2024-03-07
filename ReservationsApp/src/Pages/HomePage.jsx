@@ -1,6 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import React from "react";
 import { db } from "../FireBase";
+import "./HomePage.css";
 
 function HomePage() {
   function handleSubmit(e) {
@@ -11,6 +12,7 @@ function HomePage() {
       date: new Date(
         `${e.currentTarget.date.value}T${e.currentTarget.time.value}:00`
       ),
+      number: e.currentTarget.number.value,
     });
   }
   return (
@@ -28,6 +30,10 @@ function HomePage() {
         <div>
           <label htmlFor="time">Zeit</label>
           <input type="time" id="time" name="time" required />
+        </div>
+        <div>
+          <label htmlFor="number">Anzahl Personen</label>
+          <input type="number" id="number" name="number" min={0} required />
         </div>
         <div>
           <label htmlFor="email">E-Mail</label>
